@@ -1,15 +1,16 @@
-const {User} = require('../models');
+const User = require('../models/User');
+const Thought = require('../models/Thought')
 
 const userController = {
     //get all users
     getAllUsers(req, res){
         User.find({})
-        .populate({
-            path: 'thoughts',
-            select: '-__v'
-        })
+        // .populate({
+        //     path: 'thoughts',
+        //     select: '-__v'
+        // })
         .select('-__v')
-        .userController({ _id: -1 })
+        .sort({ _id: -1 })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
             console.log(err);
@@ -20,6 +21,7 @@ const userController = {
     //get one user by id
     getUserById({ params }, res) {
         User.findOne({ _id: params.id })
+        .populate('friends')
         .populate({
             path: 'thoughts',
             select: '-__v'
@@ -55,6 +57,30 @@ const userController = {
     //delete user
     deleteUser({params}, res){
         User.findOneAndDelete({ _id: params.id })
+        .then(dbUserData => res.json(dbUserData))
+        .catch(err => res.json(err));
+    },
+
+    // update a user to add a friend
+    createFriend({params}, res){
+        User.findOneAndUpdate({ _id: params.userId}, {$push: {friends: params.friendId}}, {new:true})
+                .then(dbUserData => {
+                    if (!dbUserData) {
+                        res.status(404).json({message: 'Cannot create friend: No user found with this id'});
+                        return;
+                    }
+                res.json(dbUserData);
+                })
+                .catch(err => res.json(err));
+    },
+
+    // remove a friend from a user
+    deleteFriend({params}, res){
+        User.findOneAndUpdate(
+            { _id: params.userId},
+            { $pull: {friends: {friends: params.friendId}}},
+            { new: true}
+        )
         .then(dbUserData => res.json(dbUserData))
         .catch(err => res.json(err));
     }

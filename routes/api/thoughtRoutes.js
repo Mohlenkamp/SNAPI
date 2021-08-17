@@ -14,21 +14,29 @@ const { put } = require('./userRoutes');
 router
     .route('/')
     .get(getAllThought)
+    .post(createThought);
 
 // /api/thoughts/<thoughtid>
 router
-    .route('/:id')
+    .route('/:thoughtid')
     .get(getThoughtById)
-    .post(createThought)  //id will be userId instead
     .put(updateThought)
     .delete(deleteThought);
 
-// /api/thoughts/<userId>/<thoughtId>
+// /api/thoughts/<thoughtId>/<userid>
+// router
+//     .route('/:thoughtId/:userId/')
+//     .post(createThought) 
+
+
+// /api/thoughts/<thoughtid>/reactions
 router
-    .route('/:userId/:thoughtId')
-    .post(createReaction)
+    .route('/:thoughtId/reactions')    
+    .post(createReaction) 
 
 // /api/thoughts/<thoughtId>/<reactionId>
-router.route('/:thoughtId/:reactionId').delete(deleteReaction);
+router
+    .route('/:thoughtId/reactions/:reactionId')
+    .delete(deleteReaction);
 
 module.exports = router;

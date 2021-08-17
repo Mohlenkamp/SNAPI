@@ -20,8 +20,7 @@ router
 router
     .route('/:id')
     .get(getUserById)
-    .put(updateUser)   //could also make this just a route for add friend or add thought function
-    .post(updateUser)
+    .put(updateUser)   
     .delete(deleteUser);
 
 //  /api/users/:<userId>/friends.:friendId

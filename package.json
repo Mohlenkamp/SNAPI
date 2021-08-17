@@ -1,0 +1,27 @@
+{
+  "name": "SNAPI",
+  "version": "1.0.0",
+  "description": "Social Networking API",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.13.6",
+    "validator": "^13.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mohlenkamp/SNAPI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mohlenkamp/SNAPI/issues"
+  },
+  "homepage": "https://github.com/Mohlenkamp/SNAPI#readme"
+}

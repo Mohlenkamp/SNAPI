@@ -7,7 +7,15 @@ Social Networking API
 
 ## GitHub Location: https://github.com/Mohlenkamp/SNAPI
 
-## Walkthrough Video:  
+## Walkthrough Video(s):
+
+Part 1: Users and Friends (4:14) --> https://drive.google.com/file/d/13dP-Uy_WCwXzoBlqCp2utDzyTw5BO0Ce/view
+
+Part 2: Thoughts and Reactions (4:39)  --> https://drive.google.com/file/d/1d03Jdqo4xVS121hZUm21nn4fYC3YO7e7/view
+
+Part 3: Reactions and Validations (4:59) --> https://drive.google.com/file/d/1ROplzpLQ0TUagrpM8CyCOKLFdy0xy3Cy/view
+
+(Sorry I took so long to explain. I was having a hard time copying the ID's)
 
 ## Description 
 

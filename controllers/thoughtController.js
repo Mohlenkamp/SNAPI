@@ -39,7 +39,7 @@ const thoughtController = {
             .then(({ _id }) => {
                 return User.findOneAndUpdate(
                     { _id: body.userId},
-                    { $push: {thoughts: _id}},
+                    { $addToSet: {thoughts: _id}},
                     {new: true}
                 );
         })
@@ -55,7 +55,7 @@ const thoughtController = {
 
     //add reaction to thought
     createReaction({params, body}, res){
-        Thought.findOneAndUpdate({ _id: params.thoughtId}, {$push: {reactions: body}}, {new:true})
+        Thought.findOneAndUpdate({ _id: params.thoughtId}, {$addToSet: {reactions: body}}, {new:true})
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
                     res.status(404).json({message: 'Cannot create reaction: No thought found with this id'});

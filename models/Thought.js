@@ -22,6 +22,12 @@ const reactionSchema = new Schema(
             default: Date.now,
             get: (createdAtValue) => dateFormat(createdAtValue)  
         }
+    },
+    {   toJSON: {
+        virtuals: true,
+        getters: true
+    },
+    id: false
     }
 )
 
